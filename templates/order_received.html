@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Received</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='orders.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Order Received</h1>
+    <h3>Order Details:</h3>
+    <div class="order-details">
+      <p><strong>Size:</strong> {{ order_details['size'] }}</p>
+      <p><strong>Toppings:</strong> {{ order_details['toppings'] }}</p>
+      <p><strong>Extras:</strong> {{ order_details['extras'] }}</p>
+    </div>
+    <div class="order-counts">
+      <h3>Order Counts:</h3>
+      {% for pizza_type, count in pizza_orders.items() %}
+      <p><strong>{{ pizza_type[0] }}</strong> with toppings {{ pizza_type[1] }} and extras {{ pizza_type[2] }}: {{ count }}</p>
+      {% endfor %}
+    </div>
+    <p class="thank-you">Thank you for your order!</p>
+    <form action="/" method="get">
+      <button type="submit">Place Another Order</button>
+    </form>
+  </div>
+</body>
+
+</html>
